@@ -3,6 +3,7 @@ package bookclient;
 
 import java.util.List;
 import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -35,5 +36,20 @@ public interface BookServiceInterface {
     @ResponseWrapper(localName = "getAllBooksResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.GetAllBooksResponse")
     @Action(input = "http://applicationservice.com/BookServiceInterface/getAllBooksRequest", output = "http://applicationservice.com/BookServiceInterface/getAllBooksResponse")
     public List<Book> getAllBooks();
+
+    /**
+     * 
+     * @param bookId
+     * @return
+     *     returns bookclient.Book
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getBookById", targetNamespace = "http://applicationservice.com/", className = "bookclient.GetBookById")
+    @ResponseWrapper(localName = "getBookByIdResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.GetBookByIdResponse")
+    @Action(input = "http://applicationservice.com/BookServiceInterface/getBookByIdRequest", output = "http://applicationservice.com/BookServiceInterface/getBookByIdResponse")
+    public Book getBookById(
+        @WebParam(name = "book_id", targetNamespace = "")
+        String bookId);
 
 }

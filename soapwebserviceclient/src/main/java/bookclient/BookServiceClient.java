@@ -23,6 +23,11 @@ public class BookServiceClient {
                 System.out.println("======================================");
             }
 
+            Book book = bookServiceInterface.getBookById("ISBN102");
+
+            System.out.println("Retrieving single book with ID : " + book.getId());
+            System.out.println("Book Name : " + book.getBookTitle());
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

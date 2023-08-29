@@ -16,4 +16,10 @@ public class BookServiceImplementation implements BookServiceInterface {
         return BookDAO.getAllBooks();
     }
 
+    @Override
+    public Book getBookById(String book_id) {
+
+        return BookDAO.getBookById(book_id);
+    }
+
 }
