@@ -1,4 +1,4 @@
-package applicationdao;
+package com.applicationdao;
 
 import java.util.ArrayList; // class ArrayList
 import java.util.List; // interface List
