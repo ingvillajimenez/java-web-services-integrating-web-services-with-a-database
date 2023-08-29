@@ -16,41 +16,37 @@ public class BookServiceClient {
             System.out.println("Retrieving single book with ID : " + book.getId());
             System.out.println("Book Name : " + book.getBookTitle());
 
-            // Get all books before add
-            System.out.println("\nList of books, before adding a new book..\n");
+            // Get all books before delete
+            System.out.println("\nList of books, before deleting a new book..\n");
             List<Book> listBook = bookServiceInterface.getAllBooks();
 
             for (Book b : listBook) {
-
                 System.out.println("Id : " + b.getId());
                 System.out.println("Book Name : " + b.getBookTitle());
                 System.out.println("Author Name : " + b.getAuthorName());
                 System.out.println("Price : " + b.getBookPrice());
 
-                System.out.println("======================================");
+                System.out.println("==================================");
             }
 
-            // add book
-            Book newBook = new Book();
-            newBook.setId("ISBN111");
-            newBook.setBookTitle("The Hunger Games");
-            newBook.setAuthorName("Suzanne Collins");
-            newBook.setBookPrice((float) 10.0);
+            // remove book
+            String deleteMsg = bookServiceInterface.removeBook("ISBN104");
 
-            bookServiceInterface.addBook(newBook);
+            System.out.println("\n#################");
+            System.out.println("Delete message: " + deleteMsg);
+            System.out.println("###################");
 
-            // Get all books after a book add
-            System.out.println("\nList of books, after adding book..\n");
+            // Get all books after a book delete
+            System.out.println("\nList of books, after deleting a book..\n");
             List<Book> updatedBookList = bookServiceInterface.getAllBooks();
 
             for (Book b : updatedBookList) {
-
                 System.out.println("Id : " + b.getId());
                 System.out.println("Book Name : " + b.getBookTitle());
                 System.out.println("Author Name : " + b.getAuthorName());
                 System.out.println("Price : " + b.getBookPrice());
 
-                System.out.println("======================================");
+                System.out.println("==================================");
             }
 
         } catch (Exception e) {

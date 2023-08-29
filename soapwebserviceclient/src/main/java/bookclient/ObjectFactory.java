@@ -27,6 +27,8 @@ public class ObjectFactory {
     private final static QName _AddBook_QNAME = new QName("http://applicationservice.com/", "addBook");
     private final static QName _GetAllBooksResponse_QNAME = new QName("http://applicationservice.com/", "getAllBooksResponse");
     private final static QName _GetBookById_QNAME = new QName("http://applicationservice.com/", "getBookById");
+    private final static QName _RemoveBook_QNAME = new QName("http://applicationservice.com/", "removeBook");
+    private final static QName _RemoveBookResponse_QNAME = new QName("http://applicationservice.com/", "removeBookResponse");
     private final static QName _GetAllBooks_QNAME = new QName("http://applicationservice.com/", "getAllBooks");
     private final static QName _GetBookByIdResponse_QNAME = new QName("http://applicationservice.com/", "getBookByIdResponse");
     private final static QName _AddBookResponse_QNAME = new QName("http://applicationservice.com/", "addBookResponse");
@@ -79,11 +81,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveBookResponse }
+     * 
+     */
+    public RemoveBookResponse createRemoveBookResponse() {
+        return new RemoveBookResponse();
+    }
+
+    /**
      * Create an instance of {@link GetBookById }
      * 
      */
     public GetBookById createGetBookById() {
         return new GetBookById();
+    }
+
+    /**
+     * Create an instance of {@link RemoveBook }
+     * 
+     */
+    public RemoveBook createRemoveBook() {
+        return new RemoveBook();
     }
 
     /**
@@ -119,6 +137,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://applicationservice.com/", name = "getBookById")
     public JAXBElement<GetBookById> createGetBookById(GetBookById value) {
         return new JAXBElement<GetBookById>(_GetBookById_QNAME, GetBookById.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveBook }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "removeBook")
+    public JAXBElement<RemoveBook> createRemoveBook(RemoveBook value) {
+        return new JAXBElement<RemoveBook>(_RemoveBook_QNAME, RemoveBook.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveBookResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "removeBookResponse")
+    public JAXBElement<RemoveBookResponse> createRemoveBookResponse(RemoveBookResponse value) {
+        return new JAXBElement<RemoveBookResponse>(_RemoveBookResponse_QNAME, RemoveBookResponse.class, null, value);
     }
 
     /**

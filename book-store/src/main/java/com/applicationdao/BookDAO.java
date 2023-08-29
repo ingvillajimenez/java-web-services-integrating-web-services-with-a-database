@@ -114,4 +114,28 @@ public class BookDAO {
         return responseMessage;
     }
 
+    public static String removeBook(String book_id) {
+
+        int status = 0;
+        String responseMessage = "";
+
+        try {
+            Connection myDB = getConnection();
+            PreparedStatement ps = myDB.prepareStatement("delete from books where book_id=?");
+            ps.setString(1, book_id);
+
+            status = ps.executeUpdate();
+
+            String successMsg = "Book removed successfully: " + book_id;
+            String errorMsg = "Error deleting book: " + book_id;
+
+            responseMessage = (status == 1) ? successMsg : errorMsg;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Returning response message: " + responseMessage);
+        return responseMessage;
+    }
 }

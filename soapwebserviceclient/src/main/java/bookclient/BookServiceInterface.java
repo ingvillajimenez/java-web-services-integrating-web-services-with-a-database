@@ -27,21 +27,6 @@ public interface BookServiceInterface {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "addBook", targetNamespace = "http://applicationservice.com/", className = "bookclient.AddBook")
-    @ResponseWrapper(localName = "addBookResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.AddBookResponse")
-    @Action(input = "http://applicationservice.com/BookServiceInterface/addBookRequest", output = "http://applicationservice.com/BookServiceInterface/addBookResponse")
-    public String addBook(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Book arg0);
-
-    /**
-     * 
      * @return
      *     returns java.util.List<bookclient.Book>
      */
@@ -66,5 +51,35 @@ public interface BookServiceInterface {
     public Book getBookById(
         @WebParam(name = "book_id", targetNamespace = "")
         String bookId);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "addBook", targetNamespace = "http://applicationservice.com/", className = "bookclient.AddBook")
+    @ResponseWrapper(localName = "addBookResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.AddBookResponse")
+    @Action(input = "http://applicationservice.com/BookServiceInterface/addBookRequest", output = "http://applicationservice.com/BookServiceInterface/addBookResponse")
+    public String addBook(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Book arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "removeBook", targetNamespace = "http://applicationservice.com/", className = "bookclient.RemoveBook")
+    @ResponseWrapper(localName = "removeBookResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.RemoveBookResponse")
+    @Action(input = "http://applicationservice.com/BookServiceInterface/removeBookRequest", output = "http://applicationservice.com/BookServiceInterface/removeBookResponse")
+    public String removeBook(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
 }
