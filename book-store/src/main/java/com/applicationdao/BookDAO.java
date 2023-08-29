@@ -86,4 +86,32 @@ public class BookDAO {
         return list;
     }
 
+    public static String addBook(Book book) {
+
+        int status = 0;
+        String responseMessage = "";
+
+        try {
+            Connection myDB = getConnection();
+            PreparedStatement ps = myDB
+                    .prepareStatement("insert into books(book_id, book_title, book_author, book_price) values(?, ?, ?, ?)");
+            ps.setString(1, book.getId());
+            ps.setString(2, book.getBookTitle());
+            ps.setString(3, book.getAuthorName());
+            ps.setFloat(4, book.getBookPrice());
+
+            status = ps.executeUpdate();
+
+            String successMsg = "Book added successfully: " + book.getId();
+            String errorMsg = "Error adding book: " + book.getId();
+
+            responseMessage = (status == 1) ? successMsg : errorMsg;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Returning response message: " + responseMessage);
+        return responseMessage;
+    }
+
 }

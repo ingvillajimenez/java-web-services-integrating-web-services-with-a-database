@@ -22,4 +22,10 @@ public class BookServiceImplementation implements BookServiceInterface {
         return BookDAO.getBookById(book_id);
     }
 
+    @Override
+    public String addBook(Book book) {
+
+        return BookDAO.addBook(book);
+    }
+
 }

@@ -16,4 +16,7 @@ public interface BookServiceInterface {
 
     @WebMethod
     public Book getBookById(@WebParam(name = "book_id") String book_id);
+
+    @WebMethod
+    public String addBook(Book book);
 }

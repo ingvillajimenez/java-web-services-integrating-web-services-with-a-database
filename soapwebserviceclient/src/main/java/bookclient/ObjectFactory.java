@@ -24,10 +24,12 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _AddBook_QNAME = new QName("http://applicationservice.com/", "addBook");
     private final static QName _GetAllBooksResponse_QNAME = new QName("http://applicationservice.com/", "getAllBooksResponse");
     private final static QName _GetBookById_QNAME = new QName("http://applicationservice.com/", "getBookById");
     private final static QName _GetAllBooks_QNAME = new QName("http://applicationservice.com/", "getAllBooks");
     private final static QName _GetBookByIdResponse_QNAME = new QName("http://applicationservice.com/", "getBookByIdResponse");
+    private final static QName _AddBookResponse_QNAME = new QName("http://applicationservice.com/", "addBookResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: bookclient
@@ -53,11 +55,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddBookResponse }
+     * 
+     */
+    public AddBookResponse createAddBookResponse() {
+        return new AddBookResponse();
+    }
+
+    /**
      * Create an instance of {@link GetAllBooksResponse }
      * 
      */
     public GetAllBooksResponse createGetAllBooksResponse() {
         return new GetAllBooksResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddBook }
+     * 
+     */
+    public AddBook createAddBook() {
+        return new AddBook();
     }
 
     /**
@@ -74,6 +92,15 @@ public class ObjectFactory {
      */
     public Book createBook() {
         return new Book();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddBook }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "addBook")
+    public JAXBElement<AddBook> createAddBook(AddBook value) {
+        return new JAXBElement<AddBook>(_AddBook_QNAME, AddBook.class, null, value);
     }
 
     /**
@@ -110,6 +137,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://applicationservice.com/", name = "getBookByIdResponse")
     public JAXBElement<GetBookByIdResponse> createGetBookByIdResponse(GetBookByIdResponse value) {
         return new JAXBElement<GetBookByIdResponse>(_GetBookByIdResponse_QNAME, GetBookByIdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddBookResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "addBookResponse")
+    public JAXBElement<AddBookResponse> createAddBookResponse(AddBookResponse value) {
+        return new JAXBElement<AddBookResponse>(_AddBookResponse_QNAME, AddBookResponse.class, null, value);
     }
 
 }
