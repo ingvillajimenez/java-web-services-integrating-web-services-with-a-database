@@ -33,4 +33,57 @@ public class BookDAO {
         return myDB;
     }
 
+    public static Book getBookById(String book_id) {
+
+        try {
+
+            Connection myDB = getConnection();
+            PreparedStatement ps = myDB.prepareStatement("select * from books where book_id=?");
+            ps.setString(1, book_id);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            Book book = new Book();
+
+            book.setId(rs.getString("book_id"));
+            book.setBookTitle(rs.getString("book_title"));
+            book.setAuthorName(rs.getString("book_author"));
+            book.setBookPrice(rs.getFloat("book_price"));
+
+            return book;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public static List<Book> getAllBooks() {
+
+        List<Book> list = new ArrayList<Book>();
+
+        try {
+
+            Connection myDB = getConnection();
+            PreparedStatement ps = myDB.prepareStatement("select * from books");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Book book = new Book();
+
+                book.setId(rs.getString("book_id"));
+                book.setBookTitle(rs.getString("book_title"));
+                book.setAuthorName(rs.getString("book_author"));
+                book.setBookPrice(rs.getFloat("book_price"));
+
+                list.add(book);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
 }
