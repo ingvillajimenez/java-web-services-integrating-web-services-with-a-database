@@ -1,5 +1,9 @@
 package com.applicationdao;
 
+import java.sql.Connection; // interface Connection
+import java.sql.DriverManager; // class DriverManager
+import java.sql.PreparedStatement; // interface PreparedStatement
+import java.sql.ResultSet; // interface ResultSet
 import java.util.ArrayList; // class ArrayList
 import java.util.List; // interface List
 
@@ -7,15 +11,26 @@ import com.applicationentities.Book; // class Book
 
 public class BookDAO {
 
-    public static List<Book> getAllBooks() {
+    private static Connection myDB = null;
+    private static final String url = "jdbc:mysql://localhost:3306/BookService";
+    private static final String username = "root";
+    private static final String password = "admin123";
 
-        List<Book> result = new ArrayList<Book>();
-
-        result.add(new Book("ISBN101", "The Adventures of Tom Sawyer", "Mark Twain", (float) 10.25));
-        result.add(new Book("ISBN102", "To Kill a Mockingbird", "Harper Lee", (float) 8.50));
-        result.add(new Book("ISBN103", "All the Light We Cannot See", "Anthony Doerr", (float) 9.50));
-        result.add(new Book("ISBN104", "Little Women", "Louisa May Alcott", (float) 8.75));
-
-        return result;
+    public BookDAO() {
     }
+
+    public static Connection getConnection() {
+
+        try {
+            if (myDB == null) {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                myDB = DriverManager.getConnection(url, username, password);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return myDB;
+    }
+
 }
