@@ -34,4 +34,10 @@ public class BookServiceImplementation implements BookServiceInterface {
         return BookDAO.removeBook(book_id);
     }
 
+    @Override
+    public String updateBook(Book book) {
+
+        return BookDAO.updateBook(book);
+    }
+
 }

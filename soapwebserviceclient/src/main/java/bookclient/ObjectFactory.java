@@ -31,7 +31,9 @@ public class ObjectFactory {
     private final static QName _RemoveBookResponse_QNAME = new QName("http://applicationservice.com/", "removeBookResponse");
     private final static QName _GetAllBooks_QNAME = new QName("http://applicationservice.com/", "getAllBooks");
     private final static QName _GetBookByIdResponse_QNAME = new QName("http://applicationservice.com/", "getBookByIdResponse");
+    private final static QName _UpdateBook_QNAME = new QName("http://applicationservice.com/", "updateBook");
     private final static QName _AddBookResponse_QNAME = new QName("http://applicationservice.com/", "addBookResponse");
+    private final static QName _UpdateBookResponse_QNAME = new QName("http://applicationservice.com/", "updateBookResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: bookclient
@@ -62,6 +64,22 @@ public class ObjectFactory {
      */
     public AddBookResponse createAddBookResponse() {
         return new AddBookResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBookResponse }
+     * 
+     */
+    public UpdateBookResponse createUpdateBookResponse() {
+        return new UpdateBookResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateBook }
+     * 
+     */
+    public UpdateBook createUpdateBook() {
+        return new UpdateBook();
     }
 
     /**
@@ -176,12 +194,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateBook }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "updateBook")
+    public JAXBElement<UpdateBook> createUpdateBook(UpdateBook value) {
+        return new JAXBElement<UpdateBook>(_UpdateBook_QNAME, UpdateBook.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddBookResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://applicationservice.com/", name = "addBookResponse")
     public JAXBElement<AddBookResponse> createAddBookResponse(AddBookResponse value) {
         return new JAXBElement<AddBookResponse>(_AddBookResponse_QNAME, AddBookResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateBookResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://applicationservice.com/", name = "updateBookResponse")
+    public JAXBElement<UpdateBookResponse> createUpdateBookResponse(UpdateBookResponse value) {
+        return new JAXBElement<UpdateBookResponse>(_UpdateBookResponse_QNAME, UpdateBookResponse.class, null, value);
     }
 
 }

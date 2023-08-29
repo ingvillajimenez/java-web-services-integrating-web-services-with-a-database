@@ -11,43 +11,31 @@ public class BookServiceClient {
             BookServiceImplementationService bookServiceImplementationService = new BookServiceImplementationService();
             BookServiceInterface bookServiceInterface = bookServiceImplementationService.getBookServiceImplementationPort();
 
-            Book book = bookServiceInterface.getBookById("ISBN102");
+            Book book = bookServiceInterface.getBookById("ISBN111");
 
             System.out.println("Retrieving single book with ID : " + book.getId());
             System.out.println("Book Name : " + book.getBookTitle());
+            System.out.println("Author Name : " + book.getAuthorName());
+            System.out.println("Price : " + book.getBookPrice());
 
-            // Get all books before delete
-            System.out.println("\nList of books, before deleting a new book..\n");
-            List<Book> listBook = bookServiceInterface.getAllBooks();
+            System.out.println("=====================================");
 
-            for (Book b : listBook) {
-                System.out.println("Id : " + b.getId());
-                System.out.println("Book Name : " + b.getBookTitle());
-                System.out.println("Author Name : " + b.getAuthorName());
-                System.out.println("Price : " + b.getBookPrice());
+            // update book
+            book.setBookTitle("The Hunger Games: The Ballad of Songbirds and Snakes");
+            book.setBookPrice((float) 25.0);
 
-                System.out.println("==================================");
-            }
+            String updateMsg = bookServiceInterface.updateBook(book);
 
-            // remove book
-            String deleteMsg = bookServiceInterface.removeBook("ISBN104");
+            System.out.println("\n########################");
+            System.out.println("Update message: " + updateMsg);
+            System.out.println("########################");
 
-            System.out.println("\n#################");
-            System.out.println("Delete message: " + deleteMsg);
-            System.out.println("###################");
+            book = bookServiceInterface.getBookById("ISBN111");
 
-            // Get all books after a book delete
-            System.out.println("\nList of books, after deleting a book..\n");
-            List<Book> updatedBookList = bookServiceInterface.getAllBooks();
-
-            for (Book b : updatedBookList) {
-                System.out.println("Id : " + b.getId());
-                System.out.println("Book Name : " + b.getBookTitle());
-                System.out.println("Author Name : " + b.getAuthorName());
-                System.out.println("Price : " + b.getBookPrice());
-
-                System.out.println("==================================");
-            }
+            System.out.println("\nID of retrieved book : " + book.getId());
+            System.out.println("Book Name : " + book.getBookTitle());
+            System.out.println("Author Name : " + book.getAuthorName());
+            System.out.println("Price : " + book.getBookPrice());
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

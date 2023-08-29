@@ -138,4 +138,32 @@ public class BookDAO {
         System.out.println("Returning response message: " + responseMessage);
         return responseMessage;
     }
+
+    public static String updateBook(Book book) {
+
+        int status = 0;
+        String responseMessage = "";
+
+        try {
+            Connection myDB = getConnection();
+            PreparedStatement ps = myDB
+                    .prepareStatement("update books set book_title=?,book_author=?,book_price=? where book_id=?");
+            ps.setString(1, book.getBookTitle());
+            ps.setString(2, book.getAuthorName());
+            ps.setFloat(3, book.getBookPrice());
+            ps.setString(4, book.getId());
+
+            status = ps.executeUpdate();
+
+            String successMsg = "Book updated successfully: " + book.getId();
+            String errorMsg = "Error updating book: " + book.getId();
+
+            responseMessage = (status == 1) ? successMsg : errorMsg;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Returning response message: " + responseMessage);
+        return responseMessage;
+    }
 }

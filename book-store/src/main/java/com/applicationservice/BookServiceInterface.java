@@ -22,4 +22,7 @@ public interface BookServiceInterface {
 
     @WebMethod
     public String removeBook(String book_id);
+
+    @WebMethod
+    public String updateBook(Book book);
 }

@@ -82,4 +82,19 @@ public interface BookServiceInterface {
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateBook", targetNamespace = "http://applicationservice.com/", className = "bookclient.UpdateBook")
+    @ResponseWrapper(localName = "updateBookResponse", targetNamespace = "http://applicationservice.com/", className = "bookclient.UpdateBookResponse")
+    @Action(input = "http://applicationservice.com/BookServiceInterface/updateBookRequest", output = "http://applicationservice.com/BookServiceInterface/updateBookResponse")
+    public String updateBook(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Book arg0);
+
 }
