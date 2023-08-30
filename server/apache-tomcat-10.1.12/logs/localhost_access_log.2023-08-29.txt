@@ -15,3 +15,5 @@
 0:0:0:0:0:0:0:1 - - [29/Aug/2023:21:44:45 -0500] "GET /bg-upper.png HTTP/1.1" 200 3103
 0:0:0:0:0:0:0:1 - - [29/Aug/2023:21:44:45 -0500] "GET /bg-middle.png HTTP/1.1" 200 1918
 0:0:0:0:0:0:0:1 - - [29/Aug/2023:21:44:45 -0500] "GET /bg-button.png HTTP/1.1" 200 713
+0:0:0:0:0:0:0:1 - - [29/Aug/2023:23:15:09 -0500] "GET /book-store/ws/bookservice HTTP/1.1" 200 820
+0:0:0:0:0:0:0:1 - - [29/Aug/2023:23:18:04 -0500] "GET /book-store/ws/bookservice?wsdl HTTP/1.1" 200 4742
